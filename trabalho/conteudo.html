@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MainC - Curso de Linguagem C</title>
+  <meta name="description" content="Curso completo de Linguagem C com estrutura modular para aprendizado progressivo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <link rel="stylesheet" href="src/css/style.css">
+  <link rel="stylesheet" href="src/css/variaveis.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <button class="hamburger" id="menuBtn" aria-label="Toggle sidebar">
+        <span></span><span></span><span></span>
+      </button>
+      <h1>
+        <a href="../index.html" class="logo-link">
+          Main<span class="logo-highlight">C</span>
+        </a>
+      </h1>
+    </div>
+    <div class="search-wrapper">
+      <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        stroke-width="2">
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.3-4.3" />
+      </svg>
+      <input type="text" id="barra-pesquisa" class="search-input" placeholder="Pesquisar conteúdo..."
+        onkeyup="pesquisa(this)" />
+    </div>
+  </header>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="main-layout">
+    <aside class="sidebar" id="sidebar">
+  <nav aria-label="Navegação do curso">
+    <p class="sidebar-label">Módulos</p>
+    <ul class="sidebar-list">
+      <li>
+        <a href="#introducao" class="sidebar-link active">
+          <span class="num">01</span><span>Introdução</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="#estrutura" class="sidebar-link">
+          <span class="num">02</span><span>Estrutura e Sintaxe</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="#bibliotecas" class="sidebar-link">
+          <span class="num">03</span><span>Bibliotecas</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="#variaveis" class="sidebar-link">
+          <span class="num">04</span><span>Variáveis e Tipos</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="#operadores" class="sidebar-link">
+          <span class="num">05</span><span>Operadores</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="#condicionais" class="sidebar-link">
+          <span class="num">06</span><span>Estruturas Condicionais</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="#lacos" class="sidebar-link">
+          <span class="num">07</span><span>Laços de Repetição</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="#funcoes" class="sidebar-link">
+          <span class="num">08</span><span>Funções e Recursão</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="#ponteiros" class="sidebar-link">
+          <span class="num">09</span><span>Ponteiros e Memória</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>
+
+    <main>
+  <div class="content-area">
+    
+    <section id="introducao" class="content-section">
+      <h2 class="section-title">Introdução a Linguagem C</h2>
+      <p class="section-text">
+        A linguagem C é o alicerce fundamental da computação moderna porque estabelece uma ponte direta entre a lógica humana e a execução física do hardware. Ao contrário de linguagens que escondem a complexidade através de abstrações, o C coloca o programador no controle total, permitindo a gestão precisa da memória e do processador.
+      </p>
+      <p class="section-text">
+        É a escolha padrão para sistemas onde o desempenho é crítico: kernels de sistemas operacionais, drivers, sistemas embarcados e motores de jogos. Por ser compilada e tipada de forma estática, o código é transformado em linguagem de máquina, resultando em programas extremamente rápidos e leves. Além disso, sua sintaxe influenciou gigantes como C++, Java e JavaScript.
+      </p>
+    </section>
+
+    <section id="estrutura" class="content-section">
+      <h2 class="section-title">Estrutura e Sintaxe Fundamental</h2>
+      <p class="section-text">
+        Todo programa em C possui uma anatomia padrão. A peça central é a função <code>main</code>, que indica ao sistema operacional onde a execução começa. O código é organizado entre chaves <code>{}</code> e cada instrução individual deve, obrigatoriamente, terminar com um ponto e vírgula <code>;</code>.
+      </p>
+      
+      <div class="example-label"><span>Esqueleto do Código</span><span class="line"></span></div>
+      <pre class="code-block">
+#include &lt;stdio.h&gt;
+
+int main() {
+    // As instruções ficam aqui dentro
+    printf("Olá Mundo!"); 
+    return 0; // Indica que o programa terminou com sucesso
+}</pre>
+    </section>
+
+    <section id="bibliotecas" class="content-section">
+      <h2 class="section-title">Bibliotecas: As Ferramentas Prontas</h2>
+      <p class="section-text">
+        Bibliotecas são coleções de funções que evitam "reinventar a roda". São acessadas pela diretiva <code>#include</code>.
+      </p>
+
+      <div class="library-item">
+        <h3>stdio.h (Standard Input-Output)</h3>
+        <p>Gerencia a entrada e saída de dados. Essencial para ler o teclado e exibir informações no monitor através de funções como <code>printf</code> e <code>scanf</code>.</p>
+      </div>
+
+      <div class="library-item">
+        <h3>stdlib.h (Standard Library)</h3>
+        <p>Lida com operações do sistema, gestão de memória dinâmica (<code>malloc/free</code>), geração de números aleatórios e controle de processos.</p>
+      </div>
+
+      <div class="library-item">
+        <h3>math.h (Mathematical Functions)</h3>
+        <p>Oferece "superpoderes" matemáticos como <code>sqrt</code> (raiz quadrada), <code>pow</code> (potenciação) e funções trigonométricas.</p>
+      </div>
+
+      <div class="library-item">
+        <h3>string.h (String Handling)</h3>
+        <p>Vital para manipular textos (vetores de caracteres), permitindo medir tamanhos (<code>strlen</code>), copiar (<code>strcpy</code>) ou comparar textos (<code>strcmp</code>).</p>
+      </div>
+
+      <div class="example-label"><span>Exemplo de Uso</span><span class="line"></span></div>
+      <pre class="code-block">
+#include &lt;math.h&gt;
+// Agora o programa pode calcular raízes quadradas</pre>
+    </section>
+
+    <section id="variaveis" class="content-section">
+      <h2 class="section-title">Armazenamento: Variáveis e Tipos</h2>
+      <p class="section-text">
+        No C, o computador reserva espaços fixos na memória. Cada tipo de dado exige um espaço diferente:
+      </p>
+      <ul>
+        <li><strong>int:</strong> Números inteiros. Máscara de leitura/escrita: <code>%d</code>.</li>
+        <li><strong>float:</strong> Números decimais simples. Máscara: <code>%f</code>.</li>
+        <li><strong>double:</strong> Decimais de alta precisão (cálculos científicos). Máscara: <code>%lf</code>.</li>
+        <li><strong>char:</strong> Um único caractere entre aspas simples ('A'). Máscara: <code>%c</code>.</li>
+        <li><strong>Strings:</strong> Sequências de caracteres (textos) armazenadas como vetores. Máscara: <code>%s</code>.</li>
+      </ul>
+      <div class="example-label"><span>Exemplo</span><span class="line"></span></div>
+      <pre class="code-block">
+int idade = 25;
+float preco = 19.90;
+char letra = 'C';</pre>
+    </section>
+
+    <section id="operadores" class="content-section">
+      <h2 class="section-title">Operadores e Comparações</h2>
+      <p class="section-text">
+        Os operadores realizam cálculos e avaliações lógicas. É crucial distinguir a <strong>atribuição</strong> da <strong>comparação</strong>:
+      </p>
+      <ul>
+        <li><code>=</code> : Atribui um valor (guarda o dado).</li>
+        <li><code>==</code> : Compara se dois valores são iguais.</li>
+        <li><code>&&</code> e <code>||</code> : Operadores lógicos "E" e "OU".</li>
+        <li><code>%</code> : Operador de módulo (retorna o resto da divisão).</li>
+      </ul>
+    </section>
+
+    <section id="condicionais" class="content-section">
+      <h2 class="section-title">Estruturas Condicionais</h2>
+      <p class="section-text">
+        O <code>if</code> avalia uma condição. Se for verdadeira, o bloco é executado; caso contrário, o fluxo pode seguir pelo <code>else</code> ou <code>else if</code>. O <code>switch case</code> serve para seleções rápidas entre múltiplas opções fixas.
+      </p>
+      <div class="example-label"><span>Exemplo de Decisão</span><span class="line"></span></div>
+      <pre class="code-block">
+if (nota >= 7) {
+    printf("Aprovado");
+} else {
+    printf("Recuperação");
+}</pre>
+    </section>
+
+    <section id="lacos" class="content-section">
+      <h2 class="section-title">Laços de Repetição (Loops)</h2>
+      <p class="section-text">
+        Evitam a repetição manual de comandos. No C, cada laço possui uma aplicação ideal:
+      </p>
+      <ul>
+        <li><strong>FOR:</strong> Ideal para quando se sabe o número exato de repetições (como um atleta dando 10 voltas em uma pista). Agrupa início, condição e incremento.</li>
+        <li><strong>WHILE:</strong> Repete enquanto uma condição for verdade (como encher um reservatório enquanto o sensor for "não cheio"). Testa antes de executar.</li>
+        <li><strong>DO WHILE:</strong> Executa o bloco ao menos uma vez e testa a condição no fim (ideal para menus de usuário).</li>
+      </ul>
+      
+      <div class="example-label"><span>Exemplo (FOR)</span><span class="line"></span></div>
+      <pre class="code-block">
+for (int i = 1; i <= 10; i++) {
+    printf("Volta %d\n", i);
+}</pre>
+    </section>
+
+    <section id="funcoes" class="content-section">
+      <h2 class="section-title">Funções e Recursão</h2>
+      <p class="section-text">
+        Funções são blocos independentes que realizam tarefas específicas, facilitando a reutilização do código. A <strong>Recursão</strong> ocorre quando uma função chama a si mesma para resolver um problema menor (como o cálculo de um Fatorial).
+      </p>
+      <p class="section-text">
+        Toda função recursiva exige um "caso base" (condição de parada) para evitar o travamento do sistema por estouro de memória.
+      </p>
+      <div class="example-label"><span>Exemplo de Função</span><span class="line"></span></div>
+      <pre class="code-block">
+int somar(int a, int b) {
+    return a + b;
+}</pre>
+    </section>
+
+    <section id="ponteiros" class="content-section">
+      <h2 class="section-title">Ponteiros e Memória</h2>
+      <p class="section-text">
+        Ponteiros são variáveis que não guardam valores comuns, mas sim o <strong>endereço de memória</strong> de outra variável. Eles permitem manipular diretamente onde o dado está fisicamente no hardware.
+      </p>
+      
+      <ul>
+        <li><code>&</code> : Operador que extrai o endereço da memória.</li>
+        <li><code>*</code> : Operador que acessa o valor guardado no endereço apontado.</li>
+      </ul>
+      <div class="example-label"><span>Exemplo de Ponteiro</span><span class="line"></span></div>
+      <pre class="code-block">
+int valor = 10;
+int *ptr = &valor; // ptr aponta para o endereço de 'valor'
+printf("Endereço: %p | Valor: %d", ptr, *ptr);</pre>
+    </section>
+
+  </div>
+</main>
+
+    
+  </div>
+
+  <footer id="contato">
+    <div class="interface">
+        <div class="line-footer">
+            <div class="flex">
+                <div class="logo-footer">
+                    <h2 style="color: #fff; font-weight: 700;">Main<span style="color: var(--color-primary);">C.</span></h2>
+                </div>
+
+                <div class="btn-social">
+                    <a href="https://github.com" target="_blank"><i class="bi bi-github"></i></a>
+                    <a href="https://linkedin.com" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://www.ifpb.edu.br/cajazeiras" target="_blank"><i class="bi bi-link-45deg"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="line-footer border">
+            <div class="flex">
+                <p><i class="bi bi-mortarboard-fill"></i> ADS - <strong>IFPB Campus Cajazeiras</strong></p>
+                <p><i class="bi bi-calendar-check"></i> 2026</p>
+                <p><i class="bi bi-envelope"></i> <a href="mailto:contato@mainc.com">contato@mainc.com</a></p>
+            </div>
+        </div>
+
+        <div class="line-footer creditos linha-creditos">
+          <p>© 2026 <span class="logo-highlight">MAINC</span>. Desenvolvido por Jeffersson Kauan, Gustavo Pires, Gabriel José e Marcos Antonio.</p>
+        </div>
+    </div>
+</footer>
+  <script src="src/js/script.js"></script>
+</body>
+
+</html>

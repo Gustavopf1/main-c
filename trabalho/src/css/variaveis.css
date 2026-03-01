@@ -1,0 +1,15 @@
+:root {
+  --bg-primary: #0F1626;
+  --bg-secondary: #242424;
+  --bg-dark: #333;
+  --bg-hover: #343d7796;
+
+  --color-primary: #3949AB;
+  --color-text: #ffffff;
+  --color-text-muted: #7d7d7d;
+  --color-border: #444;
+
+  --shadow-primary: 0 0 15px #3949AB;
+  --shadow-button: 0px 0px 8px #3949AB;
+  --radius: 0.5rem;
+}
