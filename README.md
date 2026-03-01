@@ -1,6 +1,6 @@
 # 📘 MainC - Curso de Linguagem C
 
-Este projeto é uma plataforma de aprendizado sobre Linguagem C...
+Este projeto é uma plataforma de aprendizado sobre Linguagem C.
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -13,7 +13,7 @@ Este projeto é uma plataforma de aprendizado sobre Linguagem C...
 
 * 📚 **Módulos de Estudo:** Divisão clara do conteúdo.
 * 🖱️ **Navegação:** Sistema de links entre as páginas.
-* 📱 **Compatibilidade:** Otimizado para computadores e modelos específicos de celulares.
+* 📱 **Compatibilidade:** Otimizado para computadores e modelos específicos de celulares e tablets.
 
 ## 🌐 Link para o site
 
